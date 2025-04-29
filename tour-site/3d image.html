@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futuristic 3D Image Gallery</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: radial-gradient(circle, #001f3f, #000);
+            overflow: hidden;
+            perspective: 1200px;
+        }
+        .gallery-container {
+            width: 400px;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        .gallery {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            transform-style: preserve-3d;
+            animation: rotateGallery 20s linear infinite;
+        }
+        @keyframes rotateGallery {
+            from {
+                transform: rotateY(0deg) rotateX(0deg) translateZ(0px);
+            }
+            to {
+                transform: rotateY(360deg) rotateX(0deg) translateZ(0px);
+            }
+        }
+        .gallery-item {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            transform-style: preserve-3d;
+        }
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery span {
+            display: block;
+            color: cyan;
+            text-align: center;
+            margin-top: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            text-shadow: 0 0 10px cyan;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.2);
+            box-shadow: 0 0 30px cyan;
+        }
+        .gallery-item:nth-child(1) { transform: rotateY(0deg) translateZ(200px); }
+        .gallery-item:nth-child(2) { transform: rotateY(60deg) translateZ(200px); }
+        .gallery-item:nth-child(3) { transform: rotateY(120deg) translateZ(200px); }
+        .gallery-item:nth-child(4) { transform: rotateY(180deg) translateZ(200px); }
+        .gallery-item:nth-child(5) { transform: rotateY(240deg) translateZ(200px); }
+        .gallery-item:nth-child(6) { transform: rotateY(300deg) translateZ(200px); }
+    </style>
+</head>
+<body>
+    <div class="gallery-container">
+        <div class="gallery">
+            <div class="gallery-item" onclick="openTour('tour1.html')">
+                <img src="uos1.jpg" alt="Cafeteria 1">
+                <span>Cafeteria 1</span>
+            </div>
+            <div class="gallery-item" onclick="openTour('tour2.html')">
+                <img src="library.jpg" alt="Library">
+                <span>Library</span>
+            </div>
+            <div class="gallery-item" onclick="openTour('tour3.html')">
+                <img src="uos logo.png" alt="Cafeteria 2">
+                <span>Prime Cafe</span>
+            </div>
+            <div class="gallery-item" onclick="openTour('tour4.html')">
+                <img src="ground.jpeg" alt="Sports Ground">
+                <span>Sports Ground</span>
+            </div>
+            <div class="gallery-item" onclick="openTour('tour5.html')">
+                <img src="gym.jpeg" alt="Gymnasium">
+                <span>Gymnasium</span>
+            </div>
+            <div class="gallery-item" onclick="openTour('tour6.html')">
+                <img src="path.jpeg" alt="Campus Pathways">
+                <span>Campus Pathways</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openTour(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
