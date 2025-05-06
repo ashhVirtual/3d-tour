@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3D Tour of University of Sargodha</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #1e293b;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: #033f63; /* UOS official deep blue */
+      color: white;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .logo svg {
+      width: 36px;
+      height: 36px;
+      margin-right: 8px;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 24px;
+    }
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    nav ul li a:hover {
+      color: #fcd34d; /* UOS gold-like hover */
+    }
+
+    .content-wrapper {
+      background: url('') no-repeat center center;
+      background-size: cover;
+      padding: 40px 24px;
+      flex: 1;
+    }
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.9); /* white with transparency */
+      padding: 40px 24px;
+    }
+
+    .main-heading {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #033f63;
+      margin-bottom: 20px;
+    }
+    .main-desc {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+      color: #1e3a5f;
+    }
+
+    .content-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .left-panel, .right-panel {
+      flex: 1 1 400px;
+    }
+
+    .features, .scope {
+      background: #e3efff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .features h2, .scope h2 {
+      color: #033f63;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+
+    .features ul, .scope ul {
+      padding-left: 20px;
+    }
+
+    .features ul li, .scope ul li {
+      margin-bottom: 8px;
+    }
+
+    .left-image, .right-image {
+      width: 100%;
+      border-radius: 8px;
+      margin-top: 20px;
+      object-fit: cover;
+      aspect-ratio: 16 / 9;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+
+    .scope-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 40px;
+      align-items: center;
+    }
+    .scope-wrapper .scope {
+      order: 2;
+      flex: 1 1 400px;
+    }
+    .scope-wrapper .right-image {
+      order: 1;
+      flex: 1 1 400px;
+    }
+
+.scope-wrapper .left-image {
+      order: 1;
+      flex: 1 1 400px;
+    }
+
+
+    .benefits-section {
+      text-align: center;
+      padding: 40px 24px;
+      background: #f3f4f6;
+    }
+    .benefits-section h2 {
+      font-size: 1.8rem;
+      color: #033f63;
+      margin-bottom: 16px;
+    }
+    .benefits-section p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #1e3a5f;
+    }
+
+    footer {
+      text-align: center;
+      background: #033f63;
+      color: white;
+      padding: 10px 0;
+      font-size: 0.9rem;
+    }
+ 
+.feature-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+.feature-wrapper .features {
+  order: 1;
+  flex: 1 1 400px;
+}
+.feature-wrapper .right-image {
+  order: 2;
+  flex: 1 1 400px;
+  border-radius: 8px;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.start-tour-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.start-tour-button a {
+  display: inline-block;
+  background-color: #004080; /* UoS official dark blue */
+  color: white;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.start-tour-button a:hover {
+  background-color: #0066cc; /* lighter blue on hover */
+}
+
+/* Popup styles */
+.popup-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Background with opacity */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.popup-content h2 {
+  margin-bottom: 10px;
+}
+
+.popup-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.popup-content ul li {
+  margin-bottom: 8px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+
+    @media (max-width: 768px) {
+      .content-section, .scope-wrapper {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="32,4 60,16 60,48 32,60 4,48 4,16" fill="#fcd34d" stroke="#fff" stroke-width="2"/>
+        <line x1="32" y1="4" x2="32" y2="60" stroke="#fff" stroke-width="2"/>
+        <line x1="4" y1="16" x2="60" y2="16" stroke="#fff" stroke-width="2"/>
+        <line x1="60" y1="48" x2="4" y2="48" stroke="#fff" stroke-width="2"/>
+      </svg>
+      3D Tour of UOS
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#" id="guide-button">Guide</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content-wrapper">
+    <div class="overlay">
+      <h1 class="main-heading">Enjoy 3D Journey of University of Sargodha</h1>
+      <p class="main-desc">
+        Discover the University of Sargodha like never before! Virtually explore campuse, librarie, and more. Perfect for prospective students, alumni, and event organizers!
+      </p>
+          <div class="start-tour-button">
+  <a href="test3link.html" download>Start Tour</a>
+</div>
+
+      <div class="feature-wrapper">
+  <div class="features">
+    <h2>Key Features of 3D Tour</h2>
+    <ul>
+      <li>Navigate the campus interactively</li>
+      <li>High-resolution 3D models</li>
+      <li>Explore Different locations: library, GYM, Cafe </li>
+      <li>Virtual guided tours</li>
+      <li>Mobile and desktop support</li>
+    </ul>
+  </div>
+  <img src="uni.jpg"
+       alt="3D model visualization" class="right-image" />
+</div>
+
+
+      <div class="scope-wrapper">
+        <img src="uni3.jpg"
+             alt="Students using 3D map" class="right-image" />
+        <div class="scope">
+          <h2>Scope & Main Points</h2>
+          <ul>
+            <li>Access multiple faculties virtually</li>
+            <li>Highlight libraries, auditoriums, and culture zones</li>
+            <li>Zoom & inspect architecture</li>
+            <li>Show new developments</li>
+            <li>Ideal for orientation and events</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="benefits-section">
+    <h2>Interesting Benefits of the University 3D Tour</h2>
+    <p>
+      The 3D tour helps prospective students make decisions from home, lets event planners view layouts, and gives alumni a way to relive memories. It promotes accessibility, innovation, and student engagement.
+    </p>
+  </section>
+
+  <footer>
+    Department of IT | Batch 2021–2025
+  </footer>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Tour of University of Sargodha</title>
+  <style>
+    /* Styling for the popup (hidden by default) */
+    .popup-overlay {
+      display: none;  /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7); /* Black with opacity */
+    }
+    
+    .popup-content {
+      background-color: white;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 600px;
+      border-radius: 8px;
+    }
+
+    .close-button {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close-button:hover,
+    .close-button:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Button to trigger the guide popup -->
+  <nav>
+    <ul>
+      <li><a href="#" id="guide-button">Guide</a></li>
+    </ul>
+  </nav>
+
+    <div id="guide-popup" class="popup-overlay">
+    <div class="popup-content">
+      <span class="close-button" id="close-button">&times;</span>
+      <h2>3D Tour Guidelines</h2>
+      <h3>Explore the virtual tour using these instructions:</h3>
+      <ul>
+        <li><strong></strong> Click on given icons in tour to move forward or back.</li>
+        <li><strong></strong> Left Click Mouse To Move Around in tour.</li>
+        <li><strong></strong> Click on 'i'Icon to get information.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <!-- JavaScript to handle the popup -->
+  <script>
+    const guideButton = document.getElementById('guide-button');
+    const guidePopup = document.getElementById('guide-popup');
+    const closeButton = document.getElementById('close-button');
+
+    // Show the popup when the guide button is clicked
+    guideButton.addEventListener('click', () => {
+      guidePopup.style.display = 'flex'; // Show the popup
+    });
+
+    // Close the popup when the close button is clicked
+    closeButton.addEventListener('click', () => {
+      guidePopup.style.display = 'none'; // Hide the popup
+    });
+
+    // Close the popup if the user clicks outside the popup content
+    window.addEventListener('click', (event) => {
+      if (event.target === guidePopup) {
+        guidePopup.style.display = 'none'; // Hide the popup
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+
+
+
+</body>
+</html>
