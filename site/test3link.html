@@ -237,7 +237,94 @@ header {
       color: #fcd34d; /* UOS gold-like hover */
     }
 
+/* Popup Base */
 
+/* Team Modal Base */
+.team-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.team-modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 960px;
+  animation: slideUp 0.4s ease-in-out;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.close-btn {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.team-members {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.member {
+  flex: 1 1 30%;
+  text-align: center;
+  padding: 15px;
+}
+
+.member img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  object-position: top center; /* focus image from top center */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+
+.member img:hover {
+  transform: scale(1.05);
+}
+
+.member h3 {
+  margin: 10px 0 4px;
+  font-size: 1.1rem;
+}
+
+.member p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.member ul {
+  list-style: disc;
+  padding-left: 20px;
+  text-align: left;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes slideUp {
+  from {transform: translateY(30px); opacity: 0;}
+  to {transform: translateY(0); opacity: 1;}
+}
 
 
 
@@ -258,6 +345,17 @@ header {
         font-size: 1rem;
       }
     }
+.contact-footer {
+    text-align: center;
+    font-size: 14px;
+    padding-top: 10px;
+    color: #002147;
+}
+.contact-footer a {
+    color: #002147;
+    text-decoration: none;
+}
+
   </style>
 </head>
 <body>
@@ -275,7 +373,7 @@ header {
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="javascript:void(0);" id="guide-button">Guide</a></li>
-        <li><a href="javascript:void(0);">About</a></li>
+        <li><a href="javascript:void(0);" id="openTeamModal">About</a></li>
       </ul>
     </nav>
   </header>
@@ -470,6 +568,98 @@ header {
 
 </body>
 </html>
+
+<div id="teamModal" class="team-modal">
+  <div class="team-modal-content">
+    <span class="close-btn" onclick="document.getElementById('teamModal').style.display='none'">&times;</span>
+    <h2 style="text-align:center;" style="color: #002147;">Our Team</h2>
+    <div class="team-members">
+      <div class="member">
+        <img src="pic5.jpeg" alt="Laiba Ahsan">
+        <h3>Laiba Ahsan</h3>
+        <p>BSIT51F21S009</p>
+        <strong>Expertise:</strong>
+           <p><u><strong>Programming & Technical</strong></u></p>
+  <ul>
+    <li>Library Management System – C++ (1st Semester)</li>
+    <li>School Fee Management System – OOP C++ (2nd Semester)</li>
+    <li>E-commerce – HTML/CSS (4th Semester)</li>
+    <li>Data Mining – (6th Semester)</li>
+    <li>Virtual University Tour using VR Technology – FYP</li>
+  </ul>
+      </div>
+      <div class="member">
+        <img src="pic4.jpg" alt="Ameer Hamza">
+        <h3>Ameer Hamza</h3>
+        <p>BSIT51F21R004</p>
+        <strong>Expertise:</strong>
+        <p><u><strong>Programming & Technical</strong></u></p>
+  <ul>
+    <li>Library Management System – C++ (1st Semester)</li>
+    <li>School Fee Management System – OOP C++ (2nd Semester)</li>
+    <li>Portfolio Website – JavaScript (4th Semester)</li>
+    <li>Data Mining – (6th Semester)</li>
+    <li>Virtual University Tour using VR Technology – FYP</li>
+  </ul>
+
+  <p><u><strong>Ecommerce</strong></u></p>
+  <ul>
+    <li>1 Year Experience with TikTok Shop</li>
+    <li>Facebook Ads Management</li>
+    <li>TikTok Ads</li>
+    <li>Shopify</li>
+  </ul>
+      </div>
+      <div class="member">
+        <img src="pic.jpeg" alt="Ayesha Abid">
+        <h3>Ayesha Abid</h3>
+        <p>BSIT51F21R019</p>
+        <strong>Expertise:</strong>
+         <p><u><strong>Programming & Technical</strong></u></p>
+  <ul>
+    <li>Library Management System – C++ (1st Semester)</li>
+    <li>School Fee Management System – OOP C++ (2nd Semester)</li>
+    <li>E-commerce – HTML/CSS  (4th Semester)</li>
+    <li>Data Mining – (6th Semester)</li>
+    <li>Virtual University Tour using VR Technology – FYP</li>
+  </ul>
+      <p><u><strong>Skills</strong></u></p>
+  <ul>
+    <li>3D Tour Maker (PTGui, 3D Vista)</li>
+    <li>Web Development (frontend)</li>
+    <li>Designing/Editing</li>
+    <li>Odoo Software</li>
+    <li>Canva Software</li>
+    <li>Photographing</li>
+    <li>C++ (Basic)</li>
+  </ul>
+      </div>
+    </div>
+<hr style="margin-top: 20px; border: 0.5px solid #ccc;">
+<div class="contact-footer" style="text-align: center; font-size: 14px; padding-top: 10px;">
+  <strong>Contact:</strong><br>
+  📧 Email: <a href="mailto:member.email@example.com" style="color: #002147;"> ameeruos786@gmail.com </a><br>
+  📧 Email: <a href="mailto:member.email@example.com" style="color: #002147;"> laibaahsan2477@gmail.com </a><br>
+  📧 Email: <a href="mailto:member.email@example.com" style="color: #002147;"> ashh7944@gmail.com </a><br>
+  📱 WhatsApp: <a href="https://wa.me/923001234567" target="_blank" style="color: #002147;">+92 349 0324468</a>
+</div>
+
+  </div>
+</div>
+
+ 
+<script>
+  document.getElementById('openTeamModal').addEventListener('click', function() {
+    document.getElementById('teamModal').style.display = 'block';
+  });
+
+  window.onclick = function(event) {
+    const modal = document.getElementById('teamModal');
+    if (event.target == modal) {
+      modal.style.display = 'none';
+    }
+  };
+</script>
 
 
 </body>
