@@ -192,25 +192,7 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-.start-tour-button {
-  margin-top: 20px;
-  text-align: center;
-}
 
-.start-tour-button a {
-  display: inline-block;
-  background-color: #004080; /* UoS official dark blue */
-  color: white;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-}
-
-.start-tour-button a:hover {
-  background-color: #0066cc; /* lighter blue on hover */
-}
 
 /* Popup styles */
 .popup-overlay {
@@ -357,14 +339,193 @@
     text-decoration: none;
 }
 
+.container {
+      padding: 20px;
+      text-align: center;
+      max-width: 1450px;
+      margin: 0 auto;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+     olor: #003366;
+    }
 
+    .facility-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px;
+      color: #003366;
+    }
+
+    .facility-list div {
+      background-color: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: calc(33.33% - -70px);
+      max-width: 300px;
+      text-align: center;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      cursor: pointer;
+       
+    }
+
+    .facility-list img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    .facility-name {
+      font-weight: bold;
+      font-size: 16px;
+      padding-top: 10px;
+      margin-top: 8px;
+      text-align: center;
+      white-space: nowrap;       /* keep text in one line */
+      overflow: hidden;
+      text-overflow: ellipsis;   /* show ... if text too long */
+      min-height: 24px;
+     
+    }
+
+    .facility-name a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+
+    .facility-name a:hover {
+      color: black;
+    }
+/* Allow wrapping on smaller screens */
+    @media (max-width: 768px) {
+      .facility-name {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: unset;
+        word-break: break-word;
+        line-height: 1.4;
+        min-height: 40px;
+      }
+    }
+
+
+@media (max-width: 992px) {
+      .facility-list div {
+        width: calc(50% - 20px);
+      }
+
+      .header h1 {
+        font-size: 1.2rem;
+      }
+
+      .sports-grid div {
+        width: 100%;
+      }
+
+      .sports-grid .facility-name {
+        white-space: normal;
+        text-overflow: unset;
+        word-break: break-word;
+        line-height: 1.4;
+        min-height: 40px;
+      }
+    }
+@media (max-width: 600px) {
+      .facility-list div {
+        width: 100%;
+      }
+
+      .header {
+        flex-direction: column;
+      }
+
+      .header img {
+        height: 50px;
+      }
+
+      .header h1 {
+        font-size: 1rem;
+      }
+    }
+
+.start-tour-btn {
+  background-color: #003366; /* UOS blue */
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.start-tour-btn:hover {
+  background-color: #00509e; /* slightly lighter blue */
+}
+
+.facility-item {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: calc(33.33% - -70px); /* match existing size */
+  max-width: 300px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  width: 90%;           /* relative to parent width */
+  max-width: 320px;     /* <- change this value to make it wider */
+}
+
+
+.dropdown-content a {
+  color: #003366;
+  display: block;
+  text-align: left;
+  padding: 8px 12px;
+  text-decoration: none;
+}
+
+.dropdown-content a:hover {
+  background-color: #e0e0e0;
+}
+ 
+.
 
     @media (max-width: 768px) {
       .content-section, .scope-wrapper {
         flex-direction: column;
       }
     }
+
   </style>
+
 </head>
 <body>
   <header>
@@ -393,10 +554,14 @@
         Discover the University of Sargodha like never before! Virtually explore campuse, librarie, and more. Perfect for prospective students, alumni, and event organizers!
       </p>  
 
-        <div class="start-tour-button">
-  <a href="test3link.html">Start Tour</a>
+<div style="text-align: center; margin-top: 40px;">
+  <button class="start-tour-btn" onclick="document.getElementById('start-tour-section').scrollIntoView({ behavior: 'smooth' });">
+    Start Tour
+  </button>
 </div>
-       
+
+    
+   
 
       <div class="feature-wrapper">
   <div class="features">
@@ -430,6 +595,73 @@
       </div>
     </div>
   </div>
+
+
+<div class="container" id="start-tour-section">
+    <h1>Locations to Explore</h1>
+    <div class="facility-list">
+      <div>
+        <img src="library.jpg" alt="Library" />
+        <div class="facility-name">
+         <a href="https://ashhvirtual.github.io/uos-tour/library/" target="_blank" style="color: #003366;">Library</a>
+      </div>
+      </div>
+
+      <div>
+        <img src="gym.jpg" alt="Gym" />
+        <div class="facility-name">
+          <a href="https://ashhvirtual.github.io/uos-tour/gym/" target="_blank" style="color: #003366;">GYM</a>
+        </div>
+      </div>
+
+      <div>
+        <img src="hall.jpg" alt="Multipurpose Hall" />
+        <div class="facility-name">
+         <a href="https://ashhvirtual.github.io/uos-tour/mulitpurpose/" target="_blank" style="color: #003366;">MultiPurpose Hall</a>
+      </div>
+      </div>
+
+      <div>
+        <img src="cafe 1.jpg" alt="Cafe One" />
+        <div class="facility-name">
+          <a href="https://ashhvirtual.github.io/uos-tour/cafe one/" target="_blank" style="color: #003366;">Cafe One</a>
+      </div>
+      </div>
+
+      <div>
+        <img src="cafe prime.jpg" alt="Prime Cafe" />
+        <div class="facility-name">
+          <a href="https://ashhvirtual.github.io/uos-tour/primecafe/" target="_blank" style="color: #003366;">Prime Cafe</a>
+        </div>
+      </div>
+
+      <div>
+        <img src="path3.jpeg" alt="Roads Path" />
+        <div class="facility-name">
+         <a href="https://ashhvirtual.github.io/uos-tour/path/" target="_blank" style="color: #003366;">Roads Path</a>
+      </div>
+      </div>
+
+ <div class="facility-item">
+  <img src="https://t4.ftcdn.net/jpg/08/69/70/03/360_F_869700360_tNtY9U8n0WLF6NABAOwHrywRbQCKFWww.jpg" alt="Sports Ground" />
+  
+  <div class="facility-name" onclick="toggleDropdown(this)">
+    Sports Ground
+  </div>
+
+  <div class="dropdown-content">
+    <a href="https://ashhvirtual.github.io/uos-tour/football/" target="_blank">⚽ Football Ground</a>
+    <a href="https://ashhvirtual.github.io/uos-tour/grounds/" target="_blank">🏏 Cricket Ground</a>
+    <a href="https://ashhvirtual.github.io/uos-tour/tennis/" target="_blank">🎾 Tennis Court</a>
+    <a href="https://ashhvirtual.github.io/uos-tour/basketball/" target="_blank">🏀 Basketball Court</a>
+  </div>
+</div>
+
+
+
+  </div>
+ 
+
 
   <section class="benefits-section">
     <h2>Interesting Benefits of the University 3D Tour</h2>
@@ -630,6 +862,28 @@
     }
   };
 </script>
+<script>
+  function toggleDropdown(clickedElement) {
+    const parent = clickedElement.closest(".facility-item");
+    const dropdown = parent.querySelector(".dropdown-content");
+
+    // Hide all others
+    document.querySelectorAll(".dropdown-content").forEach(item => {
+      if (item !== dropdown) item.style.display = "none";
+    });
+
+    // Toggle current one
+    dropdown.style.display = dropdown.style.display === "block" ? "none" : "block";
+  }
+
+  // Hide dropdowns on outside click
+  document.addEventListener("click", function (event) {
+    if (!event.target.classList.contains("facility-name")) {
+      document.querySelectorAll(".dropdown-content").forEach(item => item.style.display = "none");
+    }
+  });
+</script>
+
 
 
 
